@@ -1,0 +1,186 @@
+<%- include("../partials/header.ejs") %>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Form Basic</h4>
+                        <div class="ms-auto text-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Library
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <form class="form-horizontal" method="post" action="/admin/editMovie/<%= movie._id %>" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <h4 class="card-title">Edit Movie info</h4>
+                            
+                                    <!-- movie title -->
+                                    <div class="form-group row">
+                                        <label for="title" class="col-sm-3 text-end control-label col-form-label">Movie Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="title" name="title" placeholder="Movie Title Here" value="<%= movie.title %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- short intro -->
+                                    <div class="form-group row">
+                                        <label for="shortintro" class="col-sm-3 text-end control-label col-form-label">Short Intro</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="shortintro" name="shortintro" placeholder="Short Intro Here" value="<%= movie.shortintro %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- rating -->
+                                    <div class="form-group row">
+                                        <label for="rating" class="col-sm-3 text-end control-label col-form-label">Rating</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="rating" name="rating" placeholder="Enter Rating" min="1" max="5" value="<%= movie.rating %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- length -->
+                                    <div class="form-group row">
+                                        <label for="length" class="col-sm-3 text-end control-label col-form-label">Length</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="length" name="length" placeholder="Length Here" value="<%= movie.length %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- premiere -->
+                                    <div class="form-group row">
+                                        <label for="premiere" class="col-sm-3 text-end control-label col-form-label">Premiere</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control" id="premiere" name="premiere" value="<%= movie.premiere.toISOString().split('T')[0] %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- category -->
+                                    <div class="form-group row">
+                                        <label for="category" class="col-sm-3 text-end control-label col-form-label">Category</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="action" name="category" value="Action" <%= movie.category.includes('Action') ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="action">Action</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="drama" name="category" value="Drama" <%= movie.category.includes('Drama') ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="drama">Drama</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="fantasy" name="category" value="Fantasy" <%= movie.category.includes('Fantasy') ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="fantasy">Fantasy</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="horror" name="category" value="Horror" <%= movie.category.includes('Horror') ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="horror">Horror</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="adventure" name="category" value="Adventure" <%= movie.category.includes('Adventure') ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="adventure">Adventure</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- directors -->
+                                    <div class="form-group row">
+                                        <label for="directors" class="col-sm-3 text-end control-label col-form-label">Directors</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="directors" name="directors" placeholder="Directors Here" value="<%= movie.directors %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- writers -->
+                                    <div class="form-group row">
+                                        <label for="writers" class="col-sm-3 text-end control-label col-form-label">Writers</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="writers" name="writers" placeholder="Writers Here" value="<%= movie.writers %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- actors -->
+                                    <div class="form-group row">
+                                        <label for="actors" class="col-sm-3 text-end control-label col-form-label">Actors</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="actors" name="actors" placeholder="Actors Here" value="<%= movie.actors %>" required />
+                                        </div>
+                                    </div>
+                            
+                                    <!-- long intro -->
+                                    <div class="form-group row">
+                                        <label for="longintro" class="col-sm-3 text-end control-label col-form-label">Long Intro</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="longintro" name="longintro" placeholder="Long Intro Here" required><%= movie.longintro %></textarea>
+                                        </div>
+                                    </div>
+                            
+                                    <!-- image -->
+                                    <div class="form-group row">
+                                        <label for="image" class="col-sm-3 text-end control-label col-form-label">Image</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" class="form-control" id="image" name="image" />
+                                            <img src="/uploads/<%= movie.image %>" alt="<%= movie.title %>" style="width: 100px; height: auto; margin-top: 10px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                      
+                    </div>
+                    
+                </div>
+                <!-- editor -->
+                
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <%- include("../partials/footer.ejs") %>
