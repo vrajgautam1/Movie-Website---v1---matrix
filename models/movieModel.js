@@ -9,6 +9,9 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    country:{
+        type: String,
+    },
     rating: {
         type: Number,
         min: 1,
@@ -16,7 +19,7 @@ const movieSchema = new mongoose.Schema({
         required: true
     },
     length: {
-        type: String,
+        type: Number,
         required: true
     },
     premiere: {

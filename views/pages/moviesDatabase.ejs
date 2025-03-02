@@ -1,23 +1,23 @@
 <%- include("../partials/header.ejs") %>
-<div class="page-wrapper">
-  <div class="page-breadcrumb">
-    <div class="row">
-      <div class="col-12 d-flex no-block align-items-center">
-        <h4 class="page-title">Movies</h4>
-        <div class="ms-auto text-end">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Movies</li>
-            </ol>
-          </nav>
+  <div class="page-wrapper">
+    <div class="page-breadcrumb">
+      <div class="row">
+        <div class="col-12 d-flex no-block align-items-center">
+          <h4 class="page-title">Movies</h4>
+          <div class="ms-auto text-end">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Movies</li>
+              </ol>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-        <% movies.forEach(movie => { %>
+    <div class="container-fluid">
+      <div class="row">
+        <% movies.forEach(movie=> { %>
           <div class="col-12 mb-4">
             <div class="card">
               <div class="row g-0">
@@ -25,25 +25,54 @@
                 <div class="col-md-4">
                   <img src="/uploads/<%= movie.image %>" class="img-fluid rounded-start" alt="<%= movie.title %>">
                 </div>
-                
+
                 <!-- Movie Details (Right) -->
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title"><%= movie.title %></h5>
-                    <p class="card-text"><%= movie.shortintro %></p>
-                    <p><strong>Rating:</strong> <%= movie.rating %></p>
-                    <p><strong>Length:</strong> <%= movie.length %></p>
-                    <p><strong>Premiere:</strong> <%= movie.premiere %></p>
-                    <p><strong>Category:</strong> <%= movie.category ? movie.category.join(', ') : 'N/A' %></p>
-                    <p><strong>Directors:</strong> <%= movie.directors %></p>
-                    <p><strong>Writers:</strong> <%= movie.writers %></p>
-                    <p><strong>Actors:</strong> <%= movie.actors %></p>
-                    <p><strong>Long Intro:</strong> <%= movie.longintro %></p>
-                    
+                    <h5 class="card-title">
+                      <%= movie.title %>
+                    </h5>
+                    <p class="card-text">
+                      <%= movie.shortintro %>
+                    </p>
+                    <p><strong>Allowed Countries:</strong></p>
+                    <ul>
+                      <% movie.country.split(', ').forEach(country=> { %>
+                        <li>
+                          <%= country.trim() %>
+                        </li>
+                        <% }); %>
+                    </ul>
+                    <p><strong>Rating:</strong>
+                      <%= movie.rating %>
+                    </p>
+                    <p><strong>Length:</strong>
+                      <%= movie.length %>
+                    </p>
+                    <p><strong>Premiere:</strong>
+                      <%= movie.premiere %>
+                    </p>
+                    <p><strong>Category:</strong>
+                      <%= movie.category ? movie.category.join(', ') : ' N/A' %>
+                    </p>
+                    <p><strong>Directors:</strong>
+                      <%= movie.directors %>
+                    </p>
+                    <p><strong>Writers:</strong>
+                      <%= movie.writers %>
+                    </p>
+                    <p><strong>Actors:</strong>
+                      <%= movie.actors %>
+                    </p>
+                    <p><strong>Long Intro:</strong>
+                      <%= movie.longintro %>
+                    </p>
+
                     <!-- Buttons -->
                     <div class="d-flex justify-content-between">
                       <a href="/admin/editMovie/<%= movie._id %>" class="btn btn-primary">Edit</a>
-                      <form action="/admin/deleteMovie/<%= movie._id %>" method="POST" onsubmit="return confirm('Are you sure?');">
+                      <form action="/admin/deleteMovie/<%= movie._id %>" method="POST"
+                        onsubmit="return confirm('Are you sure?');">
                         <button type="submit" class="btn btn-danger">Delete</button>
                       </form>
                     </div>
@@ -52,8 +81,8 @@
               </div>
             </div>
           </div>
-        <% }); %>
-      </div>      
+          <% }); %>
+      </div>
+    </div>
   </div>
-</div>
-<%- include("../partials/footer.ejs") %>
+  <%- include("../partials/footer.ejs") %>

@@ -1,0 +1,56 @@
+<%- include("../partials/clientHeader.ejs") %>
+			<main class="main-content">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							<a href="index.html">Home</a>
+							<span>Movie Review</span>
+						</div>
+
+						<div class="filters">
+							<select id="categoryFilter">
+								<option value="">All Categories</option>
+								<option value="Action">Action</option>
+								<option value="Drama">Drama</option>
+								<option value="Fantasy">Fantasy</option>
+								<option value="Horror">Horror</option>
+								<option value="Adventure">Adventure</option>
+							</select>
+						
+							<select name="#" id="#">
+								<option value="#">2012</option>
+								<option value="#">2013</option>
+								<option value="#">2014</option>
+							</select>
+						</div>
+						<div class="movie-list">
+							<% movies.forEach(movie => { %>
+								<div class="movie">
+									<figure class="movie-poster"><img src="/uploads/<%= movie.image %>" alt="#" style="height: 150px; object-fit: cover;"></figure>
+									<div class="movie-title"><a href="/home/SingleMoviePage/<%= movie._id %>"><%= movie.title %></a></div>
+									<p><%= movie.shortintro %></p>
+								</div>
+							<%}); %>
+							
+							
+						</div> <!-- .movie-list -->
+
+						<div class="pagination">
+							<a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
+							<span class="page-number current">1</span>
+							<a href="#" class="page-number">2</a>
+							<a href="#" class="page-number">3</a>
+							<a href="#" class="page-number">4</a>
+							<a href="#" class="page-number">5</a>
+							<a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+			<script>
+				document.getElementById("categoryFilter").addEventListener("change", function() {
+					const selectedCategory = this.value;
+					window.location.href = selectedCategory ? `/home/movieReview?category=${selectedCategory}` : "/home/movieReview";
+				});
+				</script>
+<%- include("../partials/clientFooter.ejs") %>

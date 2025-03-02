@@ -1,0 +1,49 @@
+<%- include("../partials/clientHeader.ejs") %>
+    <main class="main-content">
+        <div class="container">
+            <div class="page">
+                <div class="breadcrumbs">
+                    <a href="/">Home</a>
+                    <a href="/home/movieReview">Movie Review</a>
+                    <span>The Croods</span>
+                </div>
+
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="movie-poster"><img src="/uploads/<%= movie.image %>" alt="#"></figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="movie-title"><%= movie.title%></h2>
+                            <div class="movie-summary">
+                                <p><%= movie.shortintro %></p>
+
+
+                            </div>
+                            <ul class="movie-meta">
+                                <li><strong>Rating:</strong>
+                                    <div class="star-rating" title="Rated 4.00 out of 5"><span style="width:<%= Number(movie.rating) * 20 %>%"><strong
+                                        class="rating">4.00</strong> out of 5</span></div>
+                                </li>
+                                <li><strong>Length:</strong><%= movie.length %> mins</li>
+                                <li><strong>Premiere:</strong> <%= new Date(movie.premiere).toLocaleString() %>: <%= movie.country %></li>
+                                <li><strong>Category:</strong> <%= movie.category.join(' / ') %></li>
+
+                            </ul>
+
+                            <ul class="starring">
+                                <li><strong>Directors:</strong> <%= movie.directors %></li>
+                                <li><strong>Writers:</strong> <%= movie.writers %>
+                                </li>
+                                <li><strong>Stars:</strong> <%= movie.actors %></li>
+                            </ul>
+                        </div>
+                    </div> <!-- .row -->
+                    <div class="entry-content">
+                        <p><%= movie.description %></p>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .container -->
+    </main>
+    <%- include("../partials/clientFooter.ejs") %>
