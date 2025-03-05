@@ -49,7 +49,7 @@
 ![Movie Management](screenshots\Matrix-Admin-Lite-Free-Versions-Template-by-WrapPixel-03-05-2025_10_29_AM.png)
 
 ### Login and Authentication View
-![Client View](screenshots/client-view.png)
+![Client View](C:\Users\Vraj\Desktop\RnW course coding\Node JS\Projects\Movie Website - v1 - matrix\screenshots\Matrix-Admin-Lite-Free-Versions-Template-by-WrapPixel-03-05-2025_10_29_AM.png)
 
 ## License
 This project is licensed under the MIT License.
