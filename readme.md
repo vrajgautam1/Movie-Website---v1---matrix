@@ -15,7 +15,7 @@
 - **Client Side View**: Users can browse available movies.
 
 ## Live Demo
-[Click here to view the live project](#)
+[Click here to view the live project](https://movie-website-v1-matrix.onrender.com/)
 
 ## Screenshots
 (Add screenshots of the admin panel and client side here)
